@@ -30,7 +30,9 @@ async function activateXR() {
 	// Add Directionalconst session = await navigator.xr.requestSession("immersive-ar");
 	const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3);
 	directionalLight.position.set(10, 15, 10);
+	directionalLight.target.position.set(0,0,0);
 	scene.add(directionalLight);
+	scene.add(directionalLight.target);
 
 
 	// Set up the WebGLRenderer, which handles rendering to the session's base layer.
@@ -100,12 +102,7 @@ async function activateXR() {
 		if (pose) {
 			// In mobile AR, we only have one view.
 			const view = pose.views[0];
-			directionalLight.rotation.set(
-				2,
-				directionalLight.rotation.y + time,
-				2
-				);
-			directionalLight.updateMatrixWorld(true);
+
 			const viewport = session.renderState.baseLayer.getViewport(view);
 			renderer.setSize(viewport.width, viewport.height)
 
@@ -121,8 +118,8 @@ async function activateXR() {
 				reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
 				//reticle.rotation.y = time * 0.001;
 				reticle.updateMatrixWorld(true);
-			}else{
-				reticle.visible = false;
+				directionalLight.target.position.set(hitPose.transform.position.x,hitPose.transform.position.y + 2,hitPose.transform.position.z)
+			directionalLight.updateMatrixWorld(true);
 			}
 
 
