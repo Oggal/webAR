@@ -113,6 +113,7 @@ async function activateXR() {
 				const hitPose = hitTestResults[0].getPose(referenceSpace);
 				reticle.visible = true;
 				reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
+				reticle.rotation.y = camera.rotation.y;
 				reticle.updateMatrixWorld(true);
 			}
 
