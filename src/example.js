@@ -111,5 +111,3 @@ async function activateXR() {
 
 
 }
-
-export {activateXR};
