@@ -100,7 +100,7 @@ async function activateXR() {
 		if (pose) {
 			// In mobile AR, we only have one view.
 			const view = pose.views[0];
-
+			directionalLight.rotation.set(2,time,2);
 			const viewport = session.renderState.baseLayer.getViewport(view);
 			renderer.setSize(viewport.width, viewport.height)
 
