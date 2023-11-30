@@ -28,7 +28,7 @@ async function activateXR() {
 	const scene = new THREE.Scene();
 
 	// Add Directionalconst session = await navigator.xr.requestSession("immersive-ar");
-	const directionalLight = new THREE.DirectionalLight(0xffffff, 0.3);
+	const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
 	directionalLight.position.set(10, 15, 10);
 	directionalLight.target.position.set(0,0,0);
 	scene.add(directionalLight);
