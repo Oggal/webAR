@@ -81,7 +81,7 @@ async function activateXR() {
 		if (flower) {
 			const clone = flower.clone();
 			clone.position.copy(reticle.position);
-			clone.rotation.y = reticle.rotation.y + 180;
+			clone.rotation.y = time;
 			scene.add(clone);
 		}
 	});
