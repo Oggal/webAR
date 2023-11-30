@@ -81,7 +81,7 @@ async function activateXR() {
 		if (flower) {
 			const clone = flower.clone();
 			clone.position.copy(reticle.position);
-			clone.rotation.y = event.time;
+			//clone.rotation.y = event.time;
 			scene.add(clone);
 		}
 	});
@@ -114,7 +114,7 @@ async function activateXR() {
 				const hitPose = hitTestResults[0].getPose(referenceSpace);
 				reticle.visible = true;
 				reticle.position.set(hitPose.transform.position.x, hitPose.transform.position.y, hitPose.transform.position.z)
-				reticle.rotation.y = time * 0.001;
+				//reticle.rotation.y = time * 0.001;
 				reticle.updateMatrixWorld(true);
 			}
 
