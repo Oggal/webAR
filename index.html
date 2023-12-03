@@ -74,17 +74,24 @@ async function activateXR() {
 	scene.add(reticle);
 	})
 
-	let flower;
+	let camp;
 	loader.load("https://immersive-web.github.io/webxr-samples/media/gltf/camp/camp.gltf", function(gltf) {
-	flower = gltf.scene;
+	camp = gltf.scene;
 	});
-
+	let clone;
 	session.addEventListener("select", (event) => {
-		if (flower) {
-			const clone = flower.clone();
+		if (camp) {
+			if (clone)
+			{
+			clone.position.copy(reticle.position);
+			clone.updateMatrixWorld(true);
+			}
+			else{
+			clone = camp.clone();
 			clone.position.copy(reticle.position);
 			//clone.rotation.y = event.time;
 			scene.add(clone);
+			}
 		}
 	});
 
