@@ -29,14 +29,14 @@ import {
       // move the camera back so we can view the scene
       camera.position.set(0, 0, 10);
       // create a geometry
-      const geometry = new BoxGeometry(2, 2, 2);
+      const geometry = new BoxGeometry(0.5, 0.5, 0.5);
      
       // create a default (white) Basic material
       const material = new MeshBasicMaterial();
       
       // create a Mesh containing the geometry and material
       const cube = new Mesh(geometry, material);
-        cube.position.set(0, 0, -2);
+        cube.position.set(0, 0, -5);
       // add the mesh to the scene
       scene.add(cube);
       
