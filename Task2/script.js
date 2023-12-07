@@ -30,7 +30,7 @@ import {
       camera.position.set(0, 0, 10);
       // create a geometry
       const geometry = new BoxGeometry(2, 2, 2);
-      
+      cube.position.set(0, 0, -2);
       // create a default (white) Basic material
       const material = new MeshBasicMaterial();
       
@@ -61,7 +61,7 @@ import {
         
         if (!XR) {
                 XR = true;
-                container.removeChild(flatRenderer.domElement);
+                //container.removeChild(flatRenderer.domElement);
                 const XR_canvas = document.createElement("canvas");
                 XR_canvas.id = "XR_canvas";
                 XR_canvas.style.width = "100%";
