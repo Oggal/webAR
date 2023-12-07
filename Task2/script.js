@@ -7,6 +7,7 @@ import {
         PerspectiveCamera,
         Scene,
         WebGLRenderer,
+        Vector2
       } from 'three';
       
       // Get a reference to the container element that will hold our scene
@@ -92,7 +93,10 @@ import {
 
                 XR_session.addEventListener("select", (event) => {
                         const raycaster = new Raycaster();
-                        raycaster.setFromCamera({x:event.clientX,y:event.clientY}, XR_camera);
+                        let mouse = new Vector2();
+                        mouse.x = ( event.clientX / XR_renderer.domElement.clientWidth ) * 2 - 1;
+                        mouse.y = - ( event.clientY / XR_renderer.domElement.clientHeight ) * 2 + 1;
+                        raycaster.setFromCamera(mouse, XR_camera);
                         const intersects = raycaster.intersectObjects(scene.children);
                         console.log(intersects);
                 });
