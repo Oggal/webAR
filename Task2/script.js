@@ -1,6 +1,7 @@
 import {
         BoxGeometry,
         Color,
+        Raycaster,
         Mesh,
         MeshBasicMaterial,
         PerspectiveCamera,
@@ -89,7 +90,12 @@ import {
 
                 const referenceSpace = await XR_session.requestReferenceSpace("local");
 
-
+                XR_session.addEventListener("select", (event) => {
+                        const raycaster = new Raycaster();
+                        raycaster.setFromCamera({x:event.clientX,y:event.clientY}, XR_camera);
+                        const intersects = raycaster.intersectObjects(scene.children);
+                        console.log(intersects);
+                });
 
                 const onXRFrame = (time, frame) => {
                         XR_session.requestAnimationFrame(onXRFrame);
