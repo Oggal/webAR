@@ -15,7 +15,7 @@ import {
       const scene = new Scene();
       
       // Set the background color
-      scene.background = new Color('skyblue');
+      scene.background = new Color("#FFFFFF25");
       
       // Create a camera
       const fov = 35; // AKA Field of View
@@ -42,8 +42,16 @@ import {
       scene.add(cube);
       
       // create the renderer
-      const renderer = new WebGLRenderer();
-      
+      const renderer = new WebGLRenderer(
+        { 
+                antialias: true,
+                alpha: true,
+                preserveDrawingBuffer: true,
+                canvas: container,
+                context: gl,
+        }
+      );
+      renderer.autoClear = false;
       // next, set the renderer to the same size as our container element
       renderer.setSize(container.clientWidth, container.clientHeight);
       
