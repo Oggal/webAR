@@ -1,5 +1,5 @@
 import {
-        BoxBufferGeometry,
+        BoxGeometry,
         Color,
         Mesh,
         MeshBasicMaterial,
@@ -30,7 +30,7 @@ import {
       camera.position.set(0, 0, 10);
       
       // create a geometry
-      const geometry = new BoxBufferGeometry(2, 2, 2);
+      const geometry = new BoxGeometry(2, 2, 2);
       
       // create a default (white) Basic material
       const material = new MeshBasicMaterial();
