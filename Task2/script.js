@@ -76,19 +76,22 @@ import {
                   context: gl
                 });
                 XR_Renderer.autoClear = false;
-                XR_Renderer.xr.enabled = true;
 
-                const XR_session =  await navigator.xr.requestSession("immersive-ar", {});
-                XR_session.updateRenderState({
-                  baseLayer: new XRWebGLLayer(XR_session, gl),
-                });
                 const XR_camera = new THREE.PerspectiveCamera();
                 XR_camera.matrixAutoUpdate = false;
 
+                const XR_session =  await navigator.xr.requestSession("immersive-ar");
+                XR_session.updateRenderState({
+                  baseLayer: new XRWebGLLayer(XR_session, gl),
+                });
+
                 const referenceSpace = await XR_session.requestReferenceSpace("local");
+
+
+
                 const onXRFrame = (time, frame) => {
                         XR_session.requestAnimationFrame(onXRFrame);
-                        gl.bindFramebuffer(gl.FRAMEBUFFER, XR_session.renderState.baseLayer.framebuffer);
+                        gl.bindFramebuffer(gl.FRAMEBUFFER, XR_session.renderState.baseLayer.framebuffer)
 
                         const pose = frame.getViewerPose(referenceSpace);
                         if(pose) {
@@ -96,6 +99,7 @@ import {
 
                                 const viewport = XR_session.renderState.baseLayer.getViewport(view);
                                 XR_Renderer.setSize(viewport.width, viewport.height);
+                                
                                 XR_camera.matrix.fromArray(view.transform.matrix);
                                 XR_camera.projectionMatrix.fromArray(view.projectionMatrix);
                                 XR_camera.updateMatrixWorld(true);
