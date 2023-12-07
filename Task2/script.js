@@ -59,8 +59,9 @@ import {
 
       async function activateXR() {
         console.log("activateXR");
-        container.removeChild(flatRenderer.domElement);
+        
         if (!XR_canvas) {
+                container.removeChild(flatRenderer.domElement);
                 XR_canvas = document.createElement("canvas");
                 XR_canvas.id = "XR_canvas";
                 XR_canvas.style.width = "100%";
@@ -101,6 +102,9 @@ import {
                         }
                         XR_Renderer.render(scene, camera);
                 }
+                XR_session.requestAnimationFrame(onXRFrame);
+        }else{
+                console.log("XR_canvas already exists");
         }
-        XR_session.requestAnimationFrame(onXRFrame);
+        
         }
