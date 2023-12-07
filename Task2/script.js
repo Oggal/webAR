@@ -37,6 +37,7 @@ import {
       // create a Mesh containing the geometry and material
       const cube = new Mesh(geometry, material);
         cube.position.set(0, 0, -5);
+        cube.onclick = () => {console.log("click");}
       // add the mesh to the scene
       scene.add(cube);
       
