@@ -15,7 +15,7 @@ import {
       const scene = new Scene();
       
       // Set the background color
-      scene.background = new Color("#FFFFFF25");
+      scene.background = new Color("#aa00FF25");
       
       // Create a camera
       const fov = 35; // AKA Field of View
@@ -48,7 +48,7 @@ import {
                 alpha: true,
                 preserveDrawingBuffer: true,
                 canvas: container,
-                context: gl,
+                context: container.getContext("webgl",{alpha: true, antialias: true, preserveDrawingBuffer: true})
         }
       );
       renderer.autoClear = false;
