@@ -42,24 +42,20 @@ import {
       scene.add(cube);
       
       // create the renderer
-      const renderer = new WebGLRenderer(
-        { 
-                antialias: true,
-                alpha: true,
-                preserveDrawingBuffer: true,
-                canvas: container,
-                context: container.getContext("webgl",{alpha: true, antialias: true, preserveDrawingBuffer: true})
-        }
-      );
-      renderer.autoClear = false;
+      const flatRenderer = new WebGLRenderer();
       // next, set the renderer to the same size as our container element
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      flatRenderer.setSize(container.clientWidth, container.clientHeight);
       
       // finally, set the pixel ratio so that our scene will look good on HiDPI displays
-      renderer.setPixelRatio(window.devicePixelRatio);
+      flatRenderer.setPixelRatio(window.devicePixelRatio);
       
       // add the automatically created <canvas> element to the page
-      container.append(renderer.domElement);
+      container.append(flatRenderer.domElement);
       
       // render, or 'create a still image', of the scene
-      renderer.render(scene, camera);
+      flatRenderer.render(scene, camera);
+
+
+      function activateXR() {
+        console.log("activateXR");
+      }
