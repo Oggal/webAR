@@ -24,7 +24,7 @@ const box = new Mesh(box_geo, box_mat);
 box.position.set(0, 0, -0.5);
 scene.add(box);
 
-const renderer = new THREE.WebGLRenderer({
+const renderer = new WebGLRenderer({
         alpha: true,
         preserveDrawingBuffer: true,
         canvas: canvas,
