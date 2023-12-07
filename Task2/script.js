@@ -15,7 +15,7 @@ import {
       const scene = new Scene();
       
       // Set the background color
-      scene.background = new Color("#aaB0FF");
+      scene.background = new Color("#0aB0FF");
       
       // Create a camera
       const fov = 35; // AKA Field of View
@@ -28,7 +28,6 @@ import {
       // every object is initially created at ( 0, 0, 0 )
       // move the camera back so we can view the scene
       camera.position.set(0, 0, 10);
-      //camera.matrixAutoUpdate = false;
       // create a geometry
       const geometry = new BoxGeometry(2, 2, 2);
       
