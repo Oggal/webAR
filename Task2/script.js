@@ -78,7 +78,7 @@ import {
                 });
                 XR_Renderer.autoClear = false;
 
-                const XR_camera = new THREE.PerspectiveCamera();
+                const XR_camera = new PerspectiveCamera();
                 XR_camera.matrixAutoUpdate = false;
 
                 const XR_session =  await navigator.xr.requestSession("immersive-ar");
