@@ -10,7 +10,7 @@ import {
       
       // Get a reference to the container element that will hold our scene
       const container = document.querySelector('#AR_container');
-      let XR_canvas;
+      let XR;
       // create a Scene
       const scene = new Scene();
       
@@ -59,9 +59,10 @@ import {
       async function activateXR() {
         console.log("activateXR");
         
-        if (!XR_canvas) {
+        if (!XR) {
+                XR = true;
                 container.removeChild(flatRenderer.domElement);
-                XR_canvas = document.createElement("canvas");
+                const XR_canvas = document.createElement("canvas");
                 XR_canvas.id = "XR_canvas";
                 XR_canvas.style.width = "100%";
                 XR_canvas.style.height = "100%";
@@ -99,7 +100,7 @@ import {
 
                                 const viewport = XR_session.renderState.baseLayer.getViewport(view);
                                 XR_Renderer.setSize(viewport.width, viewport.height);
-                                
+
                                 XR_camera.matrix.fromArray(view.transform.matrix);
                                 XR_camera.projectionMatrix.fromArray(view.projectionMatrix);
                                 XR_camera.updateMatrixWorld(true);
