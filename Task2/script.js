@@ -55,6 +55,7 @@ import {
       // render, or 'create a still image', of the scene
       flatRenderer.render(scene, camera);
 
+      document.getElementById("XR_Button").onclick = activateXR;
 
       function activateXR() {
         console.log("activateXR");
