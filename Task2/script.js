@@ -10,7 +10,7 @@ import {
       
       // Get a reference to the container element that will hold our scene
       const container = document.querySelector('#AR_container');
-      
+      let XR_canvas;
       // create a Scene
       const scene = new Scene();
       
@@ -57,6 +57,47 @@ import {
 
       document.getElementById("XR_Button").onclick = activateXR;
 
-      function activateXR() {
+      async function activateXR() {
         console.log("activateXR");
-      }
+        if (!XR_canvas) {
+                XR_canvas = document.createElement("canvas");
+                XR_canvas.id = "XR_canvas";
+                XR_canvas.style.width = "100%";
+                XR_canvas.style.height = "100%";
+                XR_canvas.style.position = "absolute";
+                document.body.appendChild(XR_canvas);
+                const gl = XR_canvas.getContext("webgl", { xrCompatible: true });
+
+                const XR_Renderer = new WebGLRenderer({
+                  canvas: XR_canvas,
+                  context: gl,
+                  antialias: true,
+                });
+                XR_Renderer.xr.enabled = true;
+
+                const XR_session =  await navigator.xr.requestSession("immersive-ar", {});
+                XR_session.updateRenderState({
+                  baseLayer: new XRWebGLLayer(XR_session, gl),
+                });
+
+                const referenceSpace = await XR_session.requestReferenceSpace("local");
+                const onXRFrame = (time, frame) => {
+                        XR_session.requestAnimationFrame(onXRFrame);
+                        gl.bindFramebuffer(gl.FRAMEBUFFER, XR_session.renderState.baseLayer.framebuffer);
+
+                        const pose = frame.getViewerPose(referenceSpace);
+                        if(pose) {
+                                const view = pose.views[0];
+
+                                const viewport = XR_session.renderState.baseLayer.getViewport(view);
+                                XR_Renderer.setSize(viewport.width, viewport.height);
+                                camera.matrix.fromArray(view.transform.matrix);
+                                camera.projectionMatrix.fromArray(view.projectionMatrix);
+                                camera.updateMatrixWorld(true);
+
+                        }
+                        XR_Renderer.render(scene, camera);
+                }
+        }
+        XR_session.requestAnimationFrame(onXRFrame);
+        }
