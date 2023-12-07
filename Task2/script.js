@@ -97,7 +97,7 @@ import {
                         mouse.x = ( event.clientX / XR_renderer.domElement.clientWidth ) * 2 - 1;
                         mouse.y = - ( event.clientY / XR_renderer.domElement.clientHeight ) * 2 + 1;
                         raycaster.setFromCamera(mouse, XR_camera);
-                        const intersects = raycaster.intersectObjects(scene.children);
+                        const intersects = raycaster.intersectObjects(scene.children, false);
                         console.log(intersects);
                 });
 
