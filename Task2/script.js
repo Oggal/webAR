@@ -1,9 +1,11 @@
 import { 
         PerspectiveCamera,
+        MeshBasicMaterial,
         Mesh,
         BoxGeometry,
         Scene,
-        Color
+        Color,
+        WebGLRenderer
         } from "three";
 
 const container = document.querySelector("#AR_container");
