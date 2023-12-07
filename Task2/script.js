@@ -15,7 +15,7 @@ import {
       const scene = new Scene();
       
       // Set the background color
-      scene.background = new Color("#aa00FF25");
+      scene.background = new Color("#aa00FF");
       
       // Create a camera
       const fov = 35; // AKA Field of View
