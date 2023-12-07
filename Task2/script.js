@@ -15,7 +15,7 @@ import {
       const scene = new Scene();
       
       // Set the background color
-      scene.background = new Color("#0aB0FF");
+      //scene.background = new Color("#0aB0FF");
       
       // Create a camera
       const fov = 35; // AKA Field of View
@@ -82,6 +82,8 @@ import {
                 XR_session.updateRenderState({
                   baseLayer: new XRWebGLLayer(XR_session, gl),
                 });
+                const XR_camera = new THREE.PerspectiveCamera();
+                XR_camera.matrixAutoUpdate = false;
 
                 const referenceSpace = await XR_session.requestReferenceSpace("local");
                 const onXRFrame = (time, frame) => {
@@ -94,12 +96,12 @@ import {
 
                                 const viewport = XR_session.renderState.baseLayer.getViewport(view);
                                 XR_Renderer.setSize(viewport.width, viewport.height);
-                                camera.matrix.fromArray(view.transform.matrix);
-                                camera.projectionMatrix.fromArray(view.projectionMatrix);
-                                camera.updateMatrixWorld(true);
+                                XR_camera.matrix.fromArray(view.transform.matrix);
+                                XR_camera.projectionMatrix.fromArray(view.projectionMatrix);
+                                XR_camera.updateMatrixWorld(true);
 
                         }
-                        XR_Renderer.render(scene, camera);
+                        XR_Renderer.render(scene, XR_camera);
                 }
                 XR_session.requestAnimationFrame(onXRFrame);
         }else{
