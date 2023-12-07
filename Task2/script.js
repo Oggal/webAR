@@ -45,7 +45,7 @@ import {
       const renderer = new WebGLRenderer();
       
       // next, set the renderer to the same size as our container element
-      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setSize(500, 500);
       
       // finally, set the pixel ratio so that our scene will look good on HiDPI displays
       renderer.setPixelRatio(window.devicePixelRatio);
