@@ -1,4 +1,12 @@
 <!DOCTYPE html>
+<script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three/examples/jsm/"
+          }
+        }
+      </script>
 <html lang="en">
 <head>
         <title>More WebAR</title>
@@ -6,7 +14,7 @@
 
 </head>
 <body>
-        <script src="./script.js"></script>
+        <script type="module" src="./script.js"></script>
         <div id = "AR_container">
 
         </div>
