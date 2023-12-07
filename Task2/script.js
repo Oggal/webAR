@@ -28,7 +28,7 @@ import {
       // every object is initially created at ( 0, 0, 0 )
       // move the camera back so we can view the scene
       camera.position.set(0, 0, 10);
-      
+      camera.matrixAutoUpdate = false;
       // create a geometry
       const geometry = new BoxGeometry(2, 2, 2);
       
@@ -59,20 +59,23 @@ import {
 
       async function activateXR() {
         console.log("activateXR");
+        container.removeChild(flatRenderer.domElement);
         if (!XR_canvas) {
                 XR_canvas = document.createElement("canvas");
                 XR_canvas.id = "XR_canvas";
                 XR_canvas.style.width = "100%";
                 XR_canvas.style.height = "100%";
-                XR_canvas.style.position = "absolute";
+                //XR_canvas.style.position = "absolute";
                 document.body.appendChild(XR_canvas);
                 const gl = XR_canvas.getContext("webgl", { xrCompatible: true });
 
                 const XR_Renderer = new WebGLRenderer({
+                  alpha: true,
+                  preserveDrawingBuffer: true,
                   canvas: XR_canvas,
-                  context: gl,
-                  antialias: true,
+                  context: gl
                 });
+                XR_Renderer.autoClear = false;
                 XR_Renderer.xr.enabled = true;
 
                 const XR_session =  await navigator.xr.requestSession("immersive-ar", {});
