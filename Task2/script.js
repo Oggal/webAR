@@ -9,7 +9,7 @@ import {
       } from 'three';
       
       // Get a reference to the container element that will hold our scene
-      const container = document.querySelector('#scene-container');
+      const container = document.querySelector('#AR_container');
       
       // create a Scene
       const scene = new Scene();
