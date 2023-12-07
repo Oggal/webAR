@@ -5,7 +5,7 @@ import {
         BoxBufferGeometry,
         Scene,
         Color
-        } from "three";
+        } from "https://github.com/mrdoob/three.js/tree/dev/build/three.module.js";
 
 const container = document.querySelector("#AR_container");
 
