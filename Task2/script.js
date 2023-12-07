@@ -24,11 +24,14 @@ const box = new Mesh(box_geo, box_mat);
 box.position.set(0, 0, -0.5);
 scene.add(box);
 
-const renderer = new WebGLRenderer({ antialias: true, alpha: true });
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.setSize(1600, 900);
-renderer.xr.enabled = true;
-
+const renderer = new THREE.WebGLRenderer({
+        alpha: true,
+        preserveDrawingBuffer: true,
+        canvas: canvas,
+        context: gl
+});
+renderer.autoClear = false;a
+renderer.render(scene, camera)
 container.appendChild(renderer.domElement);
 
 
