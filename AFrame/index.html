@@ -16,15 +16,18 @@
       </a-camera>
       <!-- Objects -->
       <a-box position="-2 0.5 -3" rotation="0 45 0" color="#4CC3D9" material="" geometry=""></a-box>
-      <a-sphere position="0 1 -5" radius="1" color="#EF2D5E" link="target=blank; rel=noopener noreferrer; href: https://oggal.github.io;" material="" geometry=""></a-sphere>
+      <a-sphere position="0 1 -5" radius="1" color="#EF2D5E" link="target=blank; href: https://oggal.github.io;" material="" geometry=""></a-sphere>
       <a-plane position="0 0 -4" rotation="-90 0 0" width="8" height="6" color="#7BC8A4" material="" geometry=""></a-plane>
-      <a-entity position="2 0 -4" rotation=" 0 0" gltf-model="#castle" class="clickable" onclick="clicked('castle')"></a-entity>
+      <a-entity position="2 0 -4" rotation=" 0 0" gltf-model="#castle" class="clickable" onclick="openLink('https://oggal.github.io')"></a-entity>
       <!-- <a-sky color="#CCECEC" material="" geometry=""></a-sky> -->
     </a-scene>
     <script>
-      function clicked(message) {
-        alert(message);
+      function openLink(url)
+      {
+        window.open(url, '_blank').focus();
       }
+      
+
     </script>
   </body>
 </html>
