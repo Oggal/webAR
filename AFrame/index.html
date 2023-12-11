@@ -5,14 +5,13 @@
   </head>
   <body>
 
-    <a-scene xr-mode-ui="enabled: true; XRMode: ar enterARButton: #myEnterARButton"" >
-      <a id="myEnterARButton" href="#">Enter XR</a>
+    <a-scene xr-mode-ui="enabled: true; XRMode: ar;" >
       <a-assets>
         <a-asset-item id="castle" src="../models/BoxyCastle.gltf"></a-asset-item>
       </a-assets>
       
       <!-- Cursor-->
-        <a-entity cursor="rayOrigin: mouse"></a-entity>
+        <!-- <a-entity cursor="rayOrigin: mouse"></a-entity> -->
       <!-- Objects -->
       <a-box position="-2 0.5 -3" rotation="0 45 0" color="#4CC3D9" material="" geometry=""></a-box>
       <a-sphere position="0 1 -5" radius="1" color="#EF2D5E" link="href: https://oggal.github.io;" material="" geometry=""></a-sphere>
